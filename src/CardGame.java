@@ -21,20 +21,20 @@ class Deck {
 	public static final int MAX_NUMBER=50;
 	private ArrayList <Card>deck = new ArrayList<Card>();
 	
-	// Ä«µå¸¦ »ı¼ºÇÏ¿© µ¦¿¡ ³Ö´Â´Ù.
+	// ì¹´ë“œë¥¼ ìƒì„±í•˜ì—¬ ë±ì— ë„£ëŠ”ë‹¤.
 	public Deck() {
-		// 52ÀåÀÇ Ä«µå¸¦ °¡Áö°í ÀÖ´Â µ¦À» ¸¸µç´Ù.
+		// 50ì¥ì˜ ì¹´ë“œë¥¼ ê°€ì§€ê³  ìˆëŠ” ë±ì„ ë§Œë“ ë‹¤.
 		for(int i=0;i<MAX_NUMBER;i++) {
 			deck.add(new Card(i));
 		}
 	}
 
-	// Ä«µå¸¦ ¼¯´Â´Ù.
+	// ì¹´ë“œë¥¼ ì„ëŠ”ë‹¤.
 	public void shuffle() {
 		Collections.shuffle(deck);
 	}
 
-	// µ¦ÀÇ Ã³À½¿¡¼­ Ä«µå¸¦ Á¦°ÅÇÏ¿©¼­ ¹İÈ¯ÇÑ´Ù.
+	// ë±ì˜ ì²˜ìŒì—ì„œ ì¹´ë“œë¥¼ ì œê±°í•˜ì—¬ì„œ ë°˜í™˜í•œë‹¤.
 	public Card deal() {
 		return deck.remove(0);
 	}
@@ -52,7 +52,7 @@ class Player {
 		System.out.println(list);
 	}
 	
-	// ÀÚ½ÅÀÌ Áö´Ñ Ä«µå Áß ÃÖ´ë Ä«µå¸¦ ¸®½ºÆ®¿¡¼­ »èÁ¦ÇÏ°í ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+	// ìì‹ ì´ ì§€ë‹Œ ì¹´ë“œ ì¤‘ ìµœëŒ€ ì¹´ë“œë¥¼ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì‚­ì œí•˜ê³  ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	public int getMaxCard() {
 		int maxCard=0;
 		int maxValue=list.get(0).getNumber();
@@ -74,34 +74,34 @@ public class CardGame {
 		deck.shuffle();
 		Player p1 = new Player();
 		Player p2 = new Player();
-		System.out.println("p1°ú p2ÀÇ Ä«µå ¸ñ·Ï");
-		//p1°ú p2¿¡°Ô ¹ø°¥¾Æ°¡¸ç 5Àå¾¿ Ä«µå¸¦ ³ª´©¾îÁÜ
+		System.out.println("p1ê³¼ p2ì˜ ì¹´ë“œ ëª©ë¡");
+		//p1ê³¼ p2ì—ê²Œ ë²ˆê°ˆì•„ê°€ë©° 5ì¥ì”© ì¹´ë“œë¥¼ ë‚˜ëˆ„ì–´ì¤Œ
 		for(int i=0;i<5;i++) {
 			p1.getCard(deck.deal());
 			p2.getCard(deck.deal());
 		}
-		//p1, p2ÀÇ Ä«µå ¸ñ·ÏÀ» Ãâ·Â
+		//p1, p2ì˜ ì¹´ë“œ ëª©ë¡ì„ ì¶œë ¥
 		p1.showCards();
 		p2.showCards();
 		System.out.println(" ");
-		System.out.println("p1°ú p2ÀÇ ÃÖ´ë Ä«µå");
-		//p1, p2ÀÇ ÃÖ´ë Ä«µå¸¦ ¾Ë¾Æ³»µÇ ÃÖ´ë Ä«µå¸¦ ¹ö¸²
+		System.out.println("p1ê³¼ p2ì˜ ìµœëŒ€ ì¹´ë“œ");
+		//p1, p2ì˜ ìµœëŒ€ ì¹´ë“œë¥¼ ì•Œì•„ë‚´ë˜ ìµœëŒ€ ì¹´ë“œë¥¼ ë²„ë¦¼
 		int num1=p1.getMaxCard();
 		int num2=p2.getMaxCard();
 		System.out.println("p1="+num1);
 		System.out.println("p2="+num2);
-		//°ÔÀÓ ·ê¿¡ µû¶ó ½ÂÀÚ°¡ ´©±¸ÀÎÁö Ãâ·Â
+		//ê²Œì„ ë£°ì— ë”°ë¼ ìŠ¹ìê°€ ëˆ„êµ¬ì¸ì§€ ì¶œë ¥
 		if(num1>num2) {
-			System.out.println("p1ÀÇ ½Â¸®!");
+			System.out.println("p1ì˜ ìŠ¹ë¦¬!");
 		}
 		else if(num1<num2) {
-			System.out.println("p2ÀÇ ½Â¸®!");
+			System.out.println("p2ì˜ ìŠ¹ë¦¬!");
 		}
 		else {
-			System.out.println("¹«½ÂºÎ");
+			System.out.println("ë¬´ìŠ¹ë¶€");
 		}
 		System.out.println(" ");
-		//p1, p2ÀÇ Ä«µå ¸ñ·ÏÀ» Ãâ·Â
+		//p1, p2ì˜ ì¹´ë“œ ëª©ë¡ì„ ì¶œë ¥
 		p1.showCards();
 		p2.showCards();
 	}
